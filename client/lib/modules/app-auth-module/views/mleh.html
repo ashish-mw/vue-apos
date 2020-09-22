@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block main %}
+  <!-- we give an id so that vue can bind to this form -->
+  <div id="app-mleh">
+    <h1>Mleh list</h1>
+    <p v-if="isLoading">Loading ...</p>
+    <ol v-else class="mleh-list">
+      <mleh-item v-for="mleh of mlehList" v-bind:mleh="mleh" v-bind:key="mleh.id" v-on:click-mleh="clickedOnMleh"/>
+    </ol>
+  </div>
+{% endblock %}
+
+{% block extraBody %}
+  <script src="/modules/app-auth-module/js/mleh.js"></script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block main %}
+  <!-- we give an id so that vue can bind to this form -->
+  <div id="app-login">
+    <h1>Login</h1>
+    <form v-on:submit="doLogin">
+        <label>
+          Username
+          <input type="text" v-model="user.username" />
+        </label>
+        <label>
+          Password
+          <input type="password" v-model="user.password" />
+        </label>
+        <input
+          type="submit"
+          v-bind:value="formSubmitted ? '. . .' : 'Submit'"
+          v-bind:disabled="formSubmitted" />
+    </form>
+  </div>
+{% endblock %}
+
+{% block extraBody %}
+  <script src="/modules/app-auth-module/js/login.js"></script>
+{% endblock %}
